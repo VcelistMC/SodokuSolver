@@ -12,8 +12,10 @@ public class Board {
         return board[row][col] == 0;
     }
 
+    public int[][] getBoard() { return board; }
+
     public void makeMove(int row, int col, int val) {
-        if(isEmpty(row, col) && isValid(row, col, val))
+        if(isEmpty(row, col))
             board[row][col] = val;
         else
             System.out.println("invalid move");
@@ -48,28 +50,38 @@ public class Board {
         }
         return true;
     }
+
+    public void printBoard() {
+        for(int row = 0; row < BOARD_SIZE; row++) {
+            for(int col = 0; col < BOARD_SIZE; col++) {
+                if(col % 3 == 0 && col != 0)
+                    System.out.print("  ");
+                System.out.print(board[row][col] + ",");
+            }
+            System.out.println();
+            if(row == 2 || row == 5)
+                System.out.println();
+        }
+    }
+
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         int[][] b = {
-            {0,0,0, 2,6,0, 7,0,1},
-            {6,8,0, 0,7,0, 0,9,0},
-            {1,9,0, 0,0,4, 5,0,0},
+            {0,0,0,  2,6,0,  7,0,1},
+            {6,8,0,  0,7,0,  0,9,0},
+            {1,9,0,  0,0,4,  5,0,0},
 
-            {8,2,0, 1,0,0, 0,4,0},
-            {0,0,4, 6,0,2, 9,0,0},
-            {0,5,0, 0,0,3, 0,2,8},
+            {8,2,0,  1,0,0,  0,4,0},
+            {0,0,4,  6,0,2,  9,0,0},
+            {0,5,0,  0,0,3,  0,2,8},
 
-            {0,0,9, 3,0,0, 0,7,4},
-            {0,4,0, 0,5,0, 0,3,6},
-            {7,0,3, 0,1,8, 0,0,0}
+            {0,0,9,  3,0,0,  0,7,4},
+            {0,4,0,  0,5,0,  0,3,6},
+            {7,0,3,  0,1,8,  0,0,0}
         };
 
+
         Board board = new Board(b);
-        while(true) {
-            int row = input.nextInt();
-            int col = input.nextInt();
-            int val = input.nextInt();
-            board.makeMove(row, col, val);
-        }
+        board.printBoard();
     }
 }
