@@ -1,4 +1,7 @@
+import java.awt.Dimension;
+
 import javax.swing.JFrame;
+
 
 public class Solver {
     private final Board boardInstance;
@@ -52,7 +55,7 @@ public class Solver {
     public void show() {
         JFrame j = new JFrame();
         j.add(ui);
-        j.setBounds(UI.GRID_SIZE, UI.GRID_SIZE, UI.GRID_SIZE, UI.GRID_SIZE);
+        j.setMinimumSize(new Dimension(UI.UI_HEIGHT, UI.UI_WIDTH));
         j.setVisible(true);
     }
 }

@@ -5,7 +5,7 @@ import javax.swing.*;
 public class UI extends JPanel{
     private Board boardInstance;
     public static int CELL_SIZE = 60;
-    public static int GRID_SIZE, SUBGRID_SIZE;
+    public static int GRID_SIZE = 9, SUBGRID_SIZE = 3;
     public static int UI_WIDTH, UI_HEIGHT;
     private Cell cells[][];
 

@@ -1,8 +1,6 @@
-import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws InterruptedException{
-        Scanner input = new Scanner(System.in);
         int[][] grid = { 
             {3, 0, 6, 5, 0, 8, 4, 0, 0}, 
             {5, 2, 0, 0, 0, 0, 0, 0, 0}, 
@@ -20,7 +18,6 @@ public class Main {
         UI ui = new UI(board);
         Solver solver = new Solver(board, ui);
         solver.show();
-        int pause = input.nextInt();
         solver.solveBoard();
     }
 }
