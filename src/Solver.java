@@ -1,39 +1,58 @@
+import javax.swing.JFrame;
+
 public class Solver {
     private final Board boardInstance;
-    public Solver(Board board){ this.boardInstance = board; }
+    private final UI ui;
+    public Solver(Board board, UI ui){ 
+        this.boardInstance = board;
+        this.ui = ui;
+    }
 
     public void solveBoard() { solve(boardInstance.getBoard()); }
 
 
     public boolean solve(int[][] board) {
-        //find next empty cell
-        int row = -1, col = -1;
-        boolean movesLeft = false;
-        for(int i = 0; i < 9; i++){
-            for(int j = 0; j < 9; j++) {
-                if(board[i][j] == 0) {
-                    movesLeft = true;
-                    row = i;
-                    col = j;
-                    break;
+        try{
+            //find next empty cell
+            int row = -1, col = -1;
+            boolean movesLeft = false;
+            for(int i = 0; i < 9; i++){
+                for(int j = 0; j < 9; j++) {
+                    if(board[i][j] == 0) {
+                        movesLeft = true;
+                        row = i;
+                        col = j;
+                        break;
+                    }
                 }
-                if(movesLeft)
-                    break;
+            if(movesLeft)
+                break;
             }
-        }
 
-        if(!movesLeft)
-            return true;
-        
-        for(int val = 1; val <= 9; val++) {
-            if(boardInstance.isValid(row, col, val)) {
-                board[row][col] = val;
-                if(solve(board))
-                    return true;
-                else
-                    board[row][col] = 0;
+            if(!movesLeft)
+                return true;
+            
+            for(int val = 1; val <= 9; val++) {
+                if(boardInstance.isValid(row, col, val)) {
+                    ui.makeMove(row, col, val);
+                    if(solve(board))
+                        return true;
+                    else
+                        ui.makeMove(row, col, 0);
+                }
             }
+            return false;
         }
-        return false;
+        catch(Exception e) {
+            System.out.println("Bruh");
+            return false;
+        }
+    }
+
+    public void show() {
+        JFrame j = new JFrame();
+        j.add(ui);
+        j.setBounds(UI.GRID_SIZE, UI.GRID_SIZE, UI.GRID_SIZE, UI.GRID_SIZE);
+        j.setVisible(true);
     }
 }
