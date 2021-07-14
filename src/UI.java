@@ -39,9 +39,10 @@ public class UI extends JPanel{
         }
         else {
             currCell.setState(CellStatus.WRONG);
-            Thread.sleep(45);
+            Thread.sleep(10);
             currCell.setState(CellStatus.EMPTY);
             boardInstance.makeMove(row, col, 0);
         }
+        Thread.sleep(45);
     }
 }
