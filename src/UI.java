@@ -1,5 +1,4 @@
 import java.awt.*;
-import java.awt.event.*;
 import javax.swing.*;
 
 
@@ -40,7 +39,7 @@ public class UI extends JPanel{
         }
         else {
             currCell.setState(CellStatus.WRONG);
-            Thread.sleep(35);
+            Thread.sleep(45);
             currCell.setState(CellStatus.EMPTY);
             boardInstance.makeMove(row, col, 0);
         }

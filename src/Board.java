@@ -1,6 +1,4 @@
-import java.util.Scanner;
 
-import javax.swing.JFrame;
 
 public class Board {
     public final int GRID_SIZE = 9;

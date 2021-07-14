@@ -1,7 +1,5 @@
 import java.util.Scanner;
 
-import javax.swing.JFrame;
-
 public class Main {
     public static void main(String[] args) throws InterruptedException{
         Scanner input = new Scanner(System.in);
